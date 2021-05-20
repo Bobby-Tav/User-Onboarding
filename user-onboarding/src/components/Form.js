@@ -51,7 +51,6 @@ export default function Form(props){
                     </label> 
                
                     <div className='errors'>
-                    {/* 🔥 RENDER THE VALIDATION ERRORS HERE */}
                     <div>{errors.name}</div>
                     <div>{errors.email}</div>
                     <div>{errors.password}</div>

@@ -1,21 +1,23 @@
 import * as yup from 'yup'
 
-const schema = yup.object().shape({
+const formSchema = yup.object().shape({
     name: yup
-        .string() 
-        .trim() 
-        
-        .min(3, 'name must be 3 characters long'),
-        terms: yup
-            .boolean('true')
-            .required('terms is needed'),
+        .string()
+        .trim()
+        .required('Username is required')
+        .min(3, 'Username must be 3 characters long'),
     email: yup
         .string()
         .email('Must be a valid email address')
         .required('Email is required'),
     password: yup
-          .string('You need a password')
-         .required('It is needed'),
+        .string()
+        .required('Password is required'),
+    terms: yup
+        .bool().oneOf([true], 'Field must be checked'),
+    coding: yup.boolean(),
+    reading: yup.boolean(),
+    hiking: yup.boolean(),
 })
 
-export default schema
+export default formSchema
