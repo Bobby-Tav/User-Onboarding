@@ -8,6 +8,7 @@ export default function Form(props){
         const valueToUse = type === 'checkbox'? checked: value;
         update(name,valueToUse)
     }
+
      const onSubmit = e =>{
         e.preventDefault()
         submit()
@@ -27,8 +28,8 @@ export default function Form(props){
                 <label>Email:
                     <input 
                     type = 'email'
-                    name='email'
-                    value={value.email}
+                    name ='email'
+                    value = {value.email}
                     onChange={onChange}
                     />
                 </label>
@@ -42,21 +43,21 @@ export default function Form(props){
                 </label>
                 <label>Terms Of Services:
                     <input
-                    type='checkbox'
-                    name='terms'
+                    type ='checkbox'
+                    name ='terms'
                     checked = {value.terms}
                     onChange={onChange}
                     />
-                    
-                </label> 
-        <div className='errors'>
-          {/* 🔥 RENDER THE VALIDATION ERRORS HERE */}
-          <div>{errors.name}</div>
-          <div>{errors.email}</div>
-          <div>{errors.password}</div>
-          <div>{errors.terms}</div>
-        </div>
-               <button disabled={disabled}>Submit</button>
+                    </label> 
+               
+                    <div className='errors'>
+                    {/* 🔥 RENDER THE VALIDATION ERRORS HERE */}
+                    <div>{errors.name}</div>
+                    <div>{errors.email}</div>
+                    <div>{errors.password}</div>
+                    <div>{errors.terms}</div>
+                    <button disabled={disabled}>Submit</button>
+                    </div>
             </form> 
         </div>
     )

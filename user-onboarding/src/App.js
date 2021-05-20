@@ -6,10 +6,10 @@ import schema from './validation/formSchema';
 import './App.css';
 
 const initialFormValues = {
-  name:'', email:'',password:'', terms:false,
+  name:'', email:'',password:'', terms: false,
 }
 const initialFormErrors = {
-  name:'', email:'', password:'',terms:''
+  name:'', email:'', password:'',terms:'',
 }
 
 const initialUsers = [];
@@ -64,7 +64,7 @@ function App() {
       name: formValues.name.trim() ,
       email: formValues.email.trim() ,
       password: formValues.password.trim(),
-      terms: formValues.terms.trim(),
+      terms: formValues.terms ,
     }
     postNewUser(newUser);
   }

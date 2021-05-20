@@ -4,8 +4,11 @@ const schema = yup.object().shape({
     name: yup
         .string() 
         .trim() 
-        .required('name is required')
+        
         .min(3, 'name must be 3 characters long'),
+        terms: yup
+            .boolean('true')
+            .required('terms is needed'),
     email: yup
         .string()
         .email('Must be a valid email address')
@@ -13,9 +16,6 @@ const schema = yup.object().shape({
     password: yup
           .string('You need a password')
          .required('It is needed'),
-    terms: yup
-         .boolean() 
-         .required('Tos is needed'),
 })
 
 export default schema
