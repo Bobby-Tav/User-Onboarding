@@ -1,4 +1,3 @@
-
 describe('User app', () => {
     beforeEach(() => {
         cy.visit('http://localhost:3000')
@@ -7,6 +6,7 @@ describe('User app', () => {
     const passInput = () => cy.get('input[name=password]')
     const emailInput = () => cy.get('input[name=email]')
     const termsInput = () => cy.get('input[name=terms]')
+    const submitBtn = () => cy.get('button')
     
     // const textInput = () => cy.get('input[data-test=text-input-field')
     // const authorInput = () => cy.get('input[name=author]')
@@ -21,15 +21,51 @@ describe('User app', () => {
         expect({}).to.eql({})
     })
 
-    it('the proper element are showing',() =>{
+    it('the proper elements are showing',() =>{
         nameInput().should('exist')
         passInput().should('exist')
         emailInput().should('exist')
         termsInput().should('exist')
+        submitBtn().should('exist')
     })
 
-    
 
+    describe('The fields', ()=> {
+        it('Filling out the fields and checking it is empty', () => {
+            nameInput().should('have.value','')
+            nameInput().type('Robert Taveras')
+            nameInput().should('have.value', 'Robert Taveras')
+            emailInput().should('have.value','')
+            emailInput().type('robert@gmail.com')
+            emailInput().should('have.value','robert@gmail.com')
+            passInput().should('have.value', '')
+            passInput().type('password')
+            passInput().should('have.value','password')
+        })
+    })
+    describe('Checkbox and TOS', () =>{
+        it(' For checkbox ', () =>{
+            termsInput().should('be.not.checked')
+        })
+    }) 
+    describe('Submitting an entry ', ()=>{
+        it('submitting',() =>{
+            nameInput().should('have.value','')
+            nameInput().type('Robert Taveras')
+            nameInput().should('have.value', 'Robert Taveras')
+            emailInput().should('have.value','')
+            emailInput().type('robert@gmail.com')
+            emailInput().should('have.value','robert@gmail.com')
+            passInput().should('have.value', '')
+            passInput().type('password')
+            passInput().should('have.value','password')
+            termsInput().click()
+            submitBtn().click()
+        })
+    })
+        
+
+})
     // it('the proper elements are showing', () => {
     //     textInput().should('exist')
     //     authorInput().should('exist')
@@ -89,4 +125,3 @@ describe('User app', () => {
 
     //     })
     // })
-})
